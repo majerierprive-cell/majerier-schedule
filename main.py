@@ -30,6 +30,7 @@ BASE_DIR = os.getcwd()
 DOWNLOAD_DIR = os.path.join(BASE_DIR, "downloads")
 SCREENSHOT_DIR = os.path.join(BASE_DIR, "screenshots")
 LOGIN_URL = os.environ.get("LOGIN_URL")
+print("LOGIN_URL:", repr(LOGIN_URL), type(LOGIN_URL))
 
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
@@ -79,7 +80,6 @@ def save_screenshot(driver, name: str):
 
 def login(driver):
     try:
-        print("LOGIN_URL:", repr(LOGIN_URL), type(LOGIN_URL))
         driver.get(LOGIN_URL)
         time.sleep(1)
         driver.find_element(By.ID, "Login_id").send_keys(
