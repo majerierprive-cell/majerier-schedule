@@ -51,8 +51,10 @@ app = FastAPI(title="Schedule API")
 # 라우트 등록 (순환 import 방지를 위해 여기서 import)
 from routes.rental import router as rental_router
 from routes.shop import router as shop_router
+from routes.customer import router as customer_router
 app.include_router(rental_router)
 app.include_router(shop_router)
+app.include_router(customer_router)
 
 if __name__ == "__main__":
     import uvicorn
