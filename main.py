@@ -25,6 +25,7 @@ def get_chrome_driver():
     chrome_options.add_argument('--disable-dev-shm-usage')
     chrome_options.add_argument('--disable-gpu')
     chrome_options.add_argument('--window-size=1920,1080')
+    chrome_options.add_argument('--log-level=3')  # 불필요한 콘솔 로그 억제 (GCM 등)
     chrome_options.add_argument(
         '--disable-blink-features=AutomationControlled')
     chrome_options.add_experimental_option(
@@ -52,9 +53,11 @@ app = FastAPI(title="Schedule API")
 from routes.rental import router as rental_router
 from routes.shop import router as shop_router
 from routes.customer import router as customer_router
+from routes.memo import router as memo_router
 app.include_router(rental_router)
 app.include_router(shop_router)
 app.include_router(customer_router)
+app.include_router(memo_router)
 
 if __name__ == "__main__":
     import uvicorn
