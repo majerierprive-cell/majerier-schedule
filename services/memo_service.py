@@ -64,7 +64,7 @@ def register_memo(driver, schedule_type: str, target_date: datetime, customer_na
     # 2. 고객명 <a> 태그 찾아서 클릭
     try:
         # 고객명이 포함된 <a> 태그 찾기 (공백 등 오차 방지를 위해 normalize-space 사용 가능)
-        xpath = f"//a[contains(text(), '{customer_name}')] | //a[contains(normalize-space(text()), '{customer_name}')]"
+        xpath = f"//a[contains(., '{customer_name}')] | //a[contains(normalize-space(text()), '{customer_name}')]"
         customer_link = WebDriverWait(driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, xpath))
         )
